@@ -1,0 +1,138 @@
+/*
+# :::::::::::::::[]::::::::::::: #
+# :::: /_> |U_U| || /_> /_> :::: #
+# :::: <=/ |T-T| || <=/ <=/ :::: #
+# ::::::::SHISS DOTFILES:::::::: #
+# https://github.com/gzygmanski: #
+# gzygmanski@hotmail.com:::::::: #
+*/
+
+#container-eaed4d55144c813097d5aa84a204a7c2, #container-c0b83c42f274bdfa2042504993ae51a2, .middlead,
+  #bannerCnt, #toggleMsgBtn, #globalMessage, hr, #blotter, .sideArrows, .navLinksBot,
+  .bottomCtrl, #boardNavDesktopFoot, #settings, .navLinksBottom, .boardList {
+  display: none;
+}
+
+.is_thread, .is_catalog {
+  font-family: Liberation Serif;
+  background: #3b4252 none;
+  color: #d8dee9;
+  padding: 0;
+  margin: 20px;
+}
+
+.boardTitle, .navLinks.desktop, #ctrl {
+  font-family: Iosevka Term !important;
+  max-width: 800px;
+  margin: auto;
+}
+
+#boardNavDesktop {
+  font-size: 10px !important;
+  font-family: monospace;
+  max-width: 800px;
+  margin: auto;
+}
+
+#navtopright, #navbotright {
+  clear: both;
+  display: block;
+  margin-top: 5px;
+}
+
+.boardTitle {
+  padding: 20px;
+}
+
+a, a:visited {
+  color: #5e81ac;
+}
+
+.navLinks.desktop, #ctrl {
+  padding: 0.5em;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  background-color: #d8dee9;
+  border: 1px solid #4c566a;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  padding: 0;
+  margin-top: 0;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 1px;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+}
+
+input[type=checkbox]:checked:after {
+    content: '\2714';
+    position: absolute;
+    top: 0;
+    left: 2px;
+    margin: 0;
+    font-size: 10px;
+}
+
+#delform .board .thread {
+  max-width: 800px;
+  margin: 0 auto !important;
+}
+
+.replyContainer {
+  clear: both;
+  margin: 0 20px;
+}
+
+.replyContainer .post.reply, .replyContainer .post.reply.highlight {
+  width: 100%;
+  background-color: #2e3440;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 0;
+}
+
+.replyContainer .post.reply.highlight, #quote-preview {
+  background: #4c566a !important;
+  border: none !important;
+  border-radius: 3px;
+}
+
+#quote-preview {
+  padding: 6px 6px 0 0;
+}
+
+div.post div.file .fileThumb {
+  margin-left: 21px !important;
+}
+
+.postInfo, .meta {
+  font-family: monospace;
+}
+
+.meta {
+  font-size: 12px;
+}
+
+#threads .thread .teaser {
+  text-align: left;
+  font-size: 12px;
+}
+
+div.post div.file .fileThumb img, .fileThumb .expanded-thumb {
+    max-width: 718px !important;
+}
+
+.file .fileText {
+  margin: 5px;
+  font-size: 12px;
+}
+
+.quotelink, .deadlink {
+  font-size: 12px;
+  font-family: Iosevka Term;
+}

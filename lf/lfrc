@@ -19,10 +19,10 @@ map O $mimeopen --ask $f
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
-        image/*) feh $fx;;
-        application/pdf) zathura $fx;;
-        application/cbz) zathura $fx;;
-        application/cbr) zathura $fx;;
+        image/*) sxiv-rifle $fx &;;
+        application/pdf) zathura $fx &;;
+        application/vnd.comicbook+zip) mupdf $fx &;;
+        application/vnd.comicbook-rar) mupdf $fx &;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
@@ -59,5 +59,5 @@ map r reload
 map x delete
 
 set icons
-set ratios 1:1:1
+set ratios 1:2:1
 set info size:time

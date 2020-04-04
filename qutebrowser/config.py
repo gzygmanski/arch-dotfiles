@@ -20,6 +20,8 @@ c.completion.shrink = True
 c.completion.scrollbar.width = 0
 c.completion.height = '20%'
 
+c.downloads.position = 'bottom'
+
 c.zoom.default = '115%'
 c.content.user_stylesheets = str(config.configdir) + '/custom.css'
 

@@ -5,7 +5,7 @@
 # https://github.com/gzygmanski: #
 # gzygmanski@hotmail.com:::::::: #
 
-export PATH=$HOME/bin:/usr/local/bin:$HOME/scripts:$PATH
+export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/scripts
 export ZSH="/home/shiss/.oh-my-zsh"
 ZSH_THEME="shiss"
 

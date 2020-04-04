@@ -20,5 +20,5 @@ dunst &
 pgrep status || ~/scripts/./status &
 pgrep mpd-notify || ~/scripts/./mpd-notify &
 pgrep rest-break || ~/scripts/./rest-break &
-
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 exec dwm

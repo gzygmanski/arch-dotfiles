@@ -7,6 +7,15 @@
 
 " General
 let mapleader=","
+inoremap <silent>,, <Esc>/<++><CR>:nohl<CR>4xa
+noremap <silent>,, <Esc>/<++><CR>:nohl<CR>4xa
+noremap <silent>,l ggvG$:s/<++>//g<CR>:nohl<CR><C-o><C-o>
+set nocompatible " compatibility with vi"
+
+" :find"
+set path+=** " provides tab completion for file finder"
+set wildmenu " display matched files when tab complete"
+
 
 set number relativenumber " Show line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
@@ -52,10 +61,6 @@ let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_statusline_ontop=0
 let g:airline_skip_empty_sections = 1
 
-let g:nerdtree_tabs_focus_on_files=0
-let g:nerdtree_tabs_smart_startup_focus=2
-let g:nerdtree_tabs_open_on_console_startup=0
-
 let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='n'    "only enable normal mode functions.
 
@@ -67,8 +72,6 @@ let g:vimtex_view_general_viewer = 'zathura'
 
 autocmd StdinReadPre * let s:std_in=1
 
-" autocmd vimenter * NERDTreeTabsOpen
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -84,9 +87,6 @@ Plugin 'valloric/youcompleteme'
 Plugin 'SirVer/ultisnips'
 
 Plugin 'honza/vim-snippets'
-
-Plugin 'preservim/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 Plugin 'junegunn/fzf', { 'do': './install --bin' }
 Plugin 'junegunn/fzf.vim'
@@ -113,23 +113,24 @@ nmap <leader>w      :w<CR>
 nmap J              :m+<CR>
 nmap K              :m-2<CR>
 
-map <C-n>           :NERDTreeTabsToggle<CR>
 map <C-f>           :Files<CR>
 map <C-@>           :BLines<CR>
 
-inoremap (          ()<ESC>i
-inoremap "          ""<ESC>i
-inoremap '          ''<ESC>i
-inoremap {          {}<Esc>i
-inoremap [          []<Esc>i
-inoremap <          <><Esc>i
-inoremap </         </><Esc>hi
+inoremap ((          ()<++><ESC>4hi
+inoremap ""          ""<++><ESC>4hi
+inoremap ''          ''<++><ESC>4hi
+inoremap {{          {}<++><ESC>4hi
+inoremap [[          []<++><ESC>4hi
+inoremap <<          <><++><ESC>4hi
+inoremap <leader>e  <Esc>F<lyeo</<Esc>pa><Esc>O<Tab>
 inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap [<CR> [<CR>]<Esc>ko<tab>
 inoremap (<CR> (<CR>)<Esc>ko<tab>
 
-" copy/paste from primary
+nmap <leader>f      :find<Space>
+inoremap <leader>.  <C-n>" copy/paste from primary
 
+" copy/paste to/from primary
 vmap <leader>y      "*y
 vmap <leader>Y      "*Y
 

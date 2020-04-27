@@ -123,6 +123,7 @@ inoremap {{          {}<++><ESC>4hi
 inoremap [[          []<++><ESC>4hi
 inoremap <<          <><++><ESC>4hi
 inoremap <leader>e  <Esc>F<lyeo</<Esc>pa><Esc>O<Tab>
+inoremap <leader>E  <Esc>F<lyeA</<Esc>pa>
 inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap [<CR> [<CR>]<Esc>ko<tab>
 inoremap (<CR> (<CR>)<Esc>ko<tab>

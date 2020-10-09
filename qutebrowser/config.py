@@ -25,4 +25,5 @@ c.downloads.position = 'bottom'
 c.zoom.default = '115%'
 c.content.user_stylesheets = str(config.configdir) + '/custom.css'
 
+# c.config.bind('<space>m', 'spawn mpv {url}')
 config.source('nord.py')

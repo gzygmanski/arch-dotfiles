@@ -11,7 +11,7 @@
     geometry = "380x5+5-5"
     indicate_hidden = yes
     shrink = no
-    transparency = 10
+    transparency = 0
     notification_height = 0
     separator_height = 1
     padding = 0
@@ -21,7 +21,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 0
-    font = sans 10
+    font = monospace 10
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"

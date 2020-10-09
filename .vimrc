@@ -5,55 +5,91 @@
 "# https://github.com/gzygmanski: #
 "# gzygmanski@hotmail.com:::::::: #
 
-" General
+" vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'posva/vim-vue'
+Plugin 'mattn/emmet-vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'junegunn/fzf', { 'do': './install --bin' }
+Plugin 'junegunn/fzf.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ap/vim-css-color'
+Plugin 'nikvdp/ejs-syntax'
+Plugin 'jparise/vim-graphql'
+
+call vundle#end()
+filetype plugin indent on
+
+" general
 let mapleader=","
-inoremap <silent>,, <Esc>/<++><CR>:nohl<CR>4xa
-noremap <silent>,, <Esc>/<++><CR>:nohl<CR>4xa
-noremap <silent>,l ggvG$:s/<++>//g<CR>:nohl<CR><C-o><C-o>
-set nocompatible " compatibility with vi"
+set nocompatible                              " compatibility with vi
 
-" :find"
-set path+=** " provides tab completion for file finder"
-set wildmenu " display matched files when tab complete"
+" :find
+set path+=**                                  " provides tab completion for file finder
+set wildmenu                                  " display matched files when tab complete
+set wildignore+=**/node_modules/**,**/__pycache__/**,*.pyc            " ignore node_modules in wildmenu
+set hidden                                    " allow to switch buffers without writing changes
 
+" netrw
+let g:netrw_banner = 0
+let g:netrw_browse_split = 3
+let g:netrw_winsize = 25
 
-set number relativenumber " Show line numbers
-set linebreak	" Break lines at word (requires Wrap lines)
-set showbreak=+++	" Wrap-broken line prefix
-" set textwidth=100	" Line wrap (number of cols)
-set colorcolumn=101      " Visible line for line warp
-set showmatch	" Highlight matching brace
-set hlsearch	" Highlight all search results
-set smartcase	" Enable smart-case search
-set ignorecase	" Always case-insensitive
-set incsearch	" Searches for strings incrementally
+set nonu rnu                                  " Show line numbers
+set linebreak                                 " Break lines at word (requires Wrap lines)
+set showbreak=+++                             " Wrap-broken line prefix
+set textwidth=120	                      " Line wrap (number of cols)
+let &colorcolumn="".join(range(121,999),",")  " Visible line for line warp
+set cursorline
+set showmatch	                              " Highlight matching brace
+set hlsearch                                  " Highlight all search results
+set smartcase                                 " Enable smart-case search
+set ignorecase                                " Always case-insensitive
+set incsearch                                 " Searches for strings incrementally
+set expandtab                                 " Use spaces instead of tabs
+set autoindent                                " Auto-indent new lines
+set smartindent                               " Enable smart-indent
+set shiftwidth=2                              " Number of auto-indent spaces
+set softtabstop=2                             " Number of spaces per Tab
+set ruler	                              " Show row and column ruler information
+set undolevels=1000	                      " Number of undo levels
+set backspace=indent,eol,start	              " Backspace behaviour
+set ttimeoutlen=10                            " fix pause when exiting INSERT mode
+set updatetime=100                            " refresh rate
+set autoread                                  " auto read file that haven't been edited by vim
 
-set autoindent	" Auto-indent new lines
-set expandtab	" Use spaces instead of tabs
-" set shiftwidth=2	" Number of auto-indent spaces
-" set smartindent	" Enable smart-indent
-" set smarttab	" Enable smart-tabs
-set softtabstop=2	" Number of spaces per Tab
-
-" Advanced
-set ruler	" Show row and column ruler information
-set undolevels=1000	" Number of undo levels
-set backspace=indent,eol,start	" Backspace behaviour
-
-set ttimeoutlen=10 " fix pause when exiting INSERT mode
-
-" Scheme
+" scheme
 syntax on
 set rtp+=~/.vim/bundle/nord-vim
 colorscheme nord
+set background=dark
+set fcs+=vert:│
+" set fcs+=vert:▓
+" set fcs+=vert:║
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" indent guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black   ctermbg=0
 
 " statusline
 let g:airline_section_y='%p%%'
 let g:airline_section_z='%l:%c'
-
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=0
 let g:airline_theme='nord'
@@ -61,109 +97,70 @@ let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_statusline_ontop=0
 let g:airline_skip_empty_sections = 1
 
+" emmet
 let g:user_emmet_leader_key=','
-" let g:user_emmet_mode='n'    "only enable normal mode functions.
 
+" snippets
 let g:UltiSnipsExpandTrigger="<leader>."
-let g:UltiSnipsJumpForwardTrigger="<leader>n"
-let g:UltiSnipsJumpBackwardTrigger="<leader>p"
+let g:UltiSnipsJumpForwardTrigger="<leader>m"
+let g:UltiSnipsJumpBackwardTrigger="<leader>M"
 
-let g:vimtex_view_general_viewer = 'zathura'
+" fzf
+let g:fzf_preview_window = ''
 
-autocmd StdinReadPre * let s:std_in=1
-
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'posva/vim-vue'
-
-Plugin 'valloric/youcompleteme'
-" Plugin 'mattn/emmet-vim'
-Plugin 'SirVer/ultisnips'
-
-Plugin 'honza/vim-snippets'
-
-Plugin 'junegunn/fzf', { 'do': './install --bin' }
-Plugin 'junegunn/fzf.vim'
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'tpope/vim-commentary'
-
-Plugin 'lervag/vimtex'
-
-call vundle#end()            " required
-
-" filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-
-
-""" Custom maps
-
-nmap q              :q!<CR>
+" quit, save and reload
+nmap <leader>q      :q!<CR>
+nmap <leader>Q      :bufdo q!<CR>
 nmap <leader>w      :w<CR>
+nmap <leader>r      :bufdo e!<CR>
 
+" move linese up/down
 nmap J              :m+<CR>
 nmap K              :m-2<CR>
 
+" fzf shortcuts/finder
 map <C-f>           :Files<CR>
 map <C-@>           :BLines<CR>
-
-inoremap ((          ()<++><ESC>4hi
-inoremap ""          ""<++><ESC>4hi
-inoremap ''          ''<++><ESC>4hi
-inoremap {{          {}<++><ESC>4hi
-inoremap [[          []<++><ESC>4hi
-inoremap <<          <><++><ESC>4hi
-inoremap <leader>e  <Esc>F<lyeo</<Esc>pa><Esc>O<Tab>
-inoremap <leader>E  <Esc>F<lyeA</<Esc>pa>
-inoremap {<CR> {<CR>}<Esc>ko<tab>
-inoremap [<CR> [<CR>]<Esc>ko<tab>
-inoremap (<CR> (<CR>)<Esc>ko<tab>
-
 nmap <leader>f      :find<Space>
-inoremap <leader>.  <C-n>" copy/paste from primary
+nmap <C-n>          :Vexplore<CR>
+
+" closing parenheses
+inoremap ((          ()<ESC>i
+inoremap ""          ""<ESC>i
+inoremap ''          ''<ESC>i
+inoremap ``          ``<ESC>i
+inoremap {{          {}<ESC>i
+inoremap [[          []<ESC>i
+inoremap <<          <><ESC>i
+inoremap {<CR> {<CR>}<Esc>ko
+inoremap [<CR> [<CR>]<Esc>ko
+inoremap (<CR> (<CR>)<Esc>ko
 
 " copy/paste to/from primary
 vmap <leader>y      "*y
 vmap <leader>Y      "*Y
-
 nmap <leader>p      "*p
 nmap <leader>P      "*P
 
-" tabs
-
+" splits and tabs
+nmap <leader>s   <C-W>s
+nmap <leader>v   <C-W>v
 map <C-J>           <C-W>j
 map <C-K>           <C-W>k
 map <C-H>           <C-W>h
 map <C-L>           <C-W>l
-
-nmap <Tab>          :tabnext<CR>
-nmap <leader>b      :tabprevious<CR>
+nmap <S-L>          :tabnext<CR>
+nmap <S-H>          :tabprevious<CR>
 nmap <leader>n      :tabnew<CR>
 nmap <leader>c      :tabclose<CR>
-nnoremap <C-l>      :nohl<CR><C-l>:echo "Search Cleared"<CR>
 
-" vimtex
-
-nmap <leader>ll     <plug>(vimtex-compile)
-nmap <leader>lv     <plug>(vimtex-view)
-
-" Trailing spaces"
+" trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction

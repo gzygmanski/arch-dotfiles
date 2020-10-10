@@ -44,13 +44,17 @@ set hidden                                    " allow to switch buffers without 
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_browse_split = 3
-let g:netrw_winsize = 25
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_liststyle = 0
+let g:netrw_winsize = -25
+let g:netrw_sort_sequence = '[\/]$,*'
 
 set nonu rnu                                  " Show line numbers
-set linebreak                                 " Break lines at word (requires Wrap lines)
-set showbreak=+++                             " Wrap-broken line prefix
-set textwidth=120	                      " Line wrap (number of cols)
+set nowrap
+" set linebreak                                 " Break lines at word (requires Wrap lines)
+" set showbreak=+++                             " Wrap-broken line prefix
+" set textwidth=120	                      " Line wrap (number of cols)
 let &colorcolumn="".join(range(121,999),",")  " Visible line for line warp
 set cursorline
 set showmatch	                              " Highlight matching brace
@@ -69,6 +73,7 @@ set backspace=indent,eol,start	              " Backspace behaviour
 set ttimeoutlen=10                            " fix pause when exiting INSERT mode
 set updatetime=100                            " refresh rate
 set autoread                                  " auto read file that haven't been edited by vim
+set noswapfile
 
 " scheme
 syntax on
@@ -81,10 +86,10 @@ set fcs+=vert:│
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level=1
+let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black   ctermbg=0
 
 " statusline
@@ -101,12 +106,13 @@ let g:airline_skip_empty_sections = 1
 let g:user_emmet_leader_key=','
 
 " snippets
-let g:UltiSnipsExpandTrigger="<leader>."
+let g:UltiSnipsExpandTrigger="<leader>e"
 let g:UltiSnipsJumpForwardTrigger="<leader>m"
-let g:UltiSnipsJumpBackwardTrigger="<leader>M"
+let g:UltiSnipsJumpBackwardTrigger="<leader>n"
 
 " fzf
 let g:fzf_preview_window = ''
+let $FZF_DEFAULT_OPTS='--reverse --no-color'
 
 " quit, save and reload
 nmap <leader>q      :q!<CR>
@@ -151,7 +157,7 @@ map <C-H>           <C-W>h
 map <C-L>           <C-W>l
 nmap <S-L>          :tabnext<CR>
 nmap <S-H>          :tabprevious<CR>
-nmap <leader>n      :tabnew<CR>
+nmap <leader>N      :tabnew<CR>
 nmap <leader>c      :tabclose<CR>
 
 " trailing spaces

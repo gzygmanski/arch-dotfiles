@@ -25,7 +25,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 Plugin 'ap/vim-css-color'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'epilande/vim-es2015-snippets'
@@ -79,8 +79,6 @@ set rtp+=~/.vim/bundle/nord-vim
 colorscheme nord
 set background=dark
 set fcs+=vert:│
-" set fcs+=vert:▓
-" set fcs+=vert:║
 
 " netrw
 let g:vimfiler_as_default_explorer = 1
@@ -97,12 +95,10 @@ let g:vimfiler_tree_indentation = 1
 " let g:netrw_sort_sequence = '[\/]$,*'
 
 " indent guides
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black   ctermbg=0
+let g:indentLine_setColors = 1
+let g:indentLine_char = '┊'
+let g:indentLine_color_term = 8
+let g:indentLine_bgcolor_term = 256
 
 " statusline
 let g:airline_section_y='%p%%'

@@ -13,7 +13,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'arcticicestudio/nord-vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'gzygmanski/nord-vim'
 Plugin 'posva/vim-vue'
 Plugin 'mattn/emmet-vim'
 Plugin 'SirVer/ultisnips'
@@ -26,8 +27,10 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ap/vim-css-color'
-Plugin 'nikvdp/ejs-syntax'
-Plugin 'jparise/vim-graphql'
+Plugin 'epilande/vim-react-snippets'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -42,23 +45,15 @@ set wildmenu                                  " display matched files when tab c
 set wildignore+=**/node_modules/**,**/__pycache__/**,*.pyc            " ignore node_modules in wildmenu
 set hidden                                    " allow to switch buffers without writing changes
 
-" netrw
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_liststyle = 0
-let g:netrw_winsize = -25
-let g:netrw_sort_sequence = '[\/]$,*'
-
 set nonu rnu                                  " Show line numbers
 set nowrap
-" set linebreak                                 " Break lines at word (requires Wrap lines)
-" set showbreak=+++                             " Wrap-broken line prefix
+set nolinebreak                               " Break lines at word (requires Wrap lines)
+" set showbreak=+++                           " Wrap-broken line prefix
 " set textwidth=120	                      " Line wrap (number of cols)
 let &colorcolumn="".join(range(121,999),",")  " Visible line for line warp
 set cursorline
 set showmatch	                              " Highlight matching brace
-set hlsearch                                  " Highlight all search results
+set nohlsearch                                " Highlight all search results
 set smartcase                                 " Enable smart-case search
 set ignorecase                                " Always case-insensitive
 set incsearch                                 " Searches for strings incrementally
@@ -73,7 +68,10 @@ set backspace=indent,eol,start	              " Backspace behaviour
 set ttimeoutlen=10                            " fix pause when exiting INSERT mode
 set updatetime=100                            " refresh rate
 set autoread                                  " auto read file that haven't been edited by vim
-set noswapfile
+set noswapfile                                " disable swap
+set scrolloff=1                               " always show at least on line above/below the cursor
+set sidescrolloff=5
+set autoread
 
 " scheme
 syntax on
@@ -83,6 +81,20 @@ set background=dark
 set fcs+=vert:│
 " set fcs+=vert:▓
 " set fcs+=vert:║
+
+" netrw
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_tree_opened_icon = "  "
+let g:vimfiler_tree_closed_icon = "  "
+let g:vimfiler_tree_leaf_icon = '  '
+let g:vimfiler_file_icon = '  '
+let g:vimfiler_marked_file_icon = ' 﫟 '
+let g:vimfiler_tree_indentation = 1
+" let g:netrw_banner = 0
+" let g:netrw_browse_split = 4
+" let g:netrw_liststyle = 0
+" let g:netrw_winsize = 30
+" let g:netrw_sort_sequence = '[\/]$,*'
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup=1
@@ -99,6 +111,17 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=0
 let g:airline_theme='nord'
 let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline#extensions#tabline#show_splits = 0
+let airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_statusline_ontop=0
 let g:airline_skip_empty_sections = 1
 
@@ -107,8 +130,8 @@ let g:user_emmet_leader_key=','
 
 " snippets
 let g:UltiSnipsExpandTrigger="<leader>e"
-let g:UltiSnipsJumpForwardTrigger="<leader>m"
-let g:UltiSnipsJumpBackwardTrigger="<leader>n"
+let g:UltiSnipsJumpForwardTrigger="<leader>n"
+let g:UltiSnipsJumpBackwardTrigger="<leader>m"
 
 " fzf
 let g:fzf_preview_window = ''
@@ -128,25 +151,45 @@ nmap K              :m-2<CR>
 map <C-f>           :Files<CR>
 map <C-@>           :BLines<CR>
 nmap <leader>f      :find<Space>
-nmap <C-n>          :Vexplore<CR>
+nmap <C-n>          :VimFilerSplit -winwidth=40 -columns=type<CR>
 
-" closing parenheses
-inoremap ((          ()<ESC>i
-inoremap ""          ""<ESC>i
-inoremap ''          ''<ESC>i
-inoremap ``          ``<ESC>i
-inoremap {{          {}<ESC>i
-inoremap [[          []<ESC>i
-inoremap <<          <><ESC>i
+" closing delimiter
+inoremap <leader>a   <ESC>la
+inoremap ((          ()<left>
+inoremap {{          {}<left>
+inoremap [[          []<left>
+inoremap <<          <><left>
+inoremap ""          ""<left>
+inoremap ''          ''<left>
+inoremap ``          ``<left>
 inoremap {<CR> {<CR>}<Esc>ko
 inoremap [<CR> [<CR>]<Esc>ko
 inoremap (<CR> (<CR>)<Esc>ko
+
+function! IsEmptyPair(str)
+  for pair in split( &matchpairs, ',' ) + [ "''", '""', '``' ]
+    if a:str == join( split( pair, ':' ),'' )
+      return 1
+    endif
+  endfor
+  return 0
+endfunc
+
+function! WithinEmptyPair()
+  let cur = strpart( getline('.'), col('.')-2, 2 )
+  return IsEmptyPair( cur )
+endfunc
+
+inoremap <expr> <BS>    WithinEmptyPair() ? "\<Right>\<BS>\<BS>"      : "\<BS>"
+inoremap <expr> <CR>    WithinEmptyPair() ? "\<CR>\<CR>\<Up>"         : "\<CR>"
+inoremap <expr> <Space> WithinEmptyPair() ? "\<Space>\<Space>\<Left>" : "\<Space>"
 
 " copy/paste to/from primary
 vmap <leader>y      "*y
 vmap <leader>Y      "*Y
 nmap <leader>p      "*p
 nmap <leader>P      "*P
+nmap <C-p>          :set paste!<CR>
 
 " splits and tabs
 nmap <leader>s   <C-W>s
@@ -160,14 +203,10 @@ nmap <S-H>          :tabprevious<CR>
 nmap <leader>N      :tabnew<CR>
 nmap <leader>c      :tabclose<CR>
 
-" trailing spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 autocmd BufWritePre * :call TrimWhiteSpace()
+
+" disable auto comment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

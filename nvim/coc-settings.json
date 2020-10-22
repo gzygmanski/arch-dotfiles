@@ -1,0 +1,13 @@
+{
+  "javascript.validate.enable": false,
+  "javascript.suggest.enable": false,
+  "javascript.showUnused": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "graphql"
+  ]
+}

@@ -5,40 +5,26 @@
 "# https://github.com/gzygmanski: #
 "# gzygmanski@hotmail.com:::::::: #
 
-if has('python3')		"force python3 version before any other plugin can change that
-endif
+call plug#begin('~/.local/share/nvim/plugged')
 
-" vundle
-set nocompatible
-filetype off
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'gzygmanski/nord-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#end()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'gzygmanski/nord-vim'
-Plugin 'posva/vim-vue'
-Plugin 'mattn/emmet-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'epilande/vim-react-snippets'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'junegunn/fzf', { 'do': './install --bin' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'Yggdroot/indentLine'
-Plugin 'ap/vim-css-color'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimfiler.vim'
-
-call vundle#end()
-filetype plugin indent on
-
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::BASIC SETUP::::::::::: #
+"# :::::::::::::::::::::::::::::: #
 " general
 let mapleader=","
 set nocompatible                              " compatibility with vi
@@ -46,7 +32,7 @@ set nocompatible                              " compatibility with vi
 " :find
 set path+=**                                  " provides tab completion for file finder
 set wildmenu                                  " display matched files when tab complete
-set wildignore+=**/node_modules/**,**/__pycache__/**,*.pyc            " ignore node_modules in wildmenu
+set wildignore+=**/node_modules/**,**/__pycache__/**,*.pyc
 set hidden                                    " allow to switch buffers without writing changes
 
 set nonu rnu                                  " Show line numbers
@@ -70,50 +56,25 @@ set ruler                                     " Show row and column ruler inform
 set undolevels=1000                           " Number of undo levels
 set backspace=indent,eol,start                " Backspace behaviour
 set ttimeoutlen=10                            " fix pause when exiting INSERT mode
-set updatetime=100                            " refresh rate
+set updatetime=200                            " refresh rate
 set autoread                                  " auto read file that haven't been edited by vim
 set noswapfile                                " disable swap
 set scrolloff=1                               " always show at least on line above/below the cursor
 set sidescrolloff=5
 set autoread
 
-" scheme
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::SCHEME SETUP:::::::::: #
+"# :::::::::::::::::::::::::::::: #
 syntax on
 set rtp+=~/.vim/bundle/nord-vim
 colorscheme nord
 set background=dark
 set fcs+=vert:│
 
-" netrw
-call vimfiler#custom#profile('default', 'context', {
-    \ 'safe': 0,
-    \ 'columns': '',
-    \ })
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_indentation = 2
-let g:vimfiler_expand_jump_to_first_child = 0
-let g:vimfiler_tree_opened_icon = "   "
-let g:vimfiler_tree_closed_icon = "   "
-let g:vimfiler_tree_leaf_icon = ''
-let g:vimfiler_file_icon = '   '
-let g:vimfiler_marked_file_icon = '  﫟 '
-" let g:netrw_banner = 0
-" let g:netrw_browse_split = 4
-" let g:netrw_liststyle = 0
-" let g:netrw_winsize = 30
-" let g:netrw_sort_sequence = '[\/]$,*'
-
-" autoformat
-" au BufWrite * :Autoformat
-noremap <F3> :Autoformat<CR>
-" let g:formatdef_custom_js = '"eslint --parser=@babel/eslint-parser"'
-let g:formatdef_custom_js = '"/home/shisam/node_modules/.bin/eslint"'
-let g:formatters_javascript = ['custom_js']
-let g:autoformat_verbosemode=1
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::PLUGIN VARIABLES:::::: #
+"# :::::::::::::::::::::::::::::: #
 " indent guides
 let g:indentLine_setColors = 1
 let g:indentLine_char = '┊'
@@ -141,39 +102,57 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_statusline_ontop=0
 let g:airline_skip_empty_sections = 1
 
-" emmet
-let g:user_emmet_leader_key=','
-" let emmet use jsx in js files
-let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\}
-
-" snippets
-let g:UltiSnipsExpandTrigger="<leader>e"
-let g:UltiSnipsJumpForwardTrigger="<leader>n"
-let g:UltiSnipsJumpBackwardTrigger="<leader>m"
+" vimfiler
+call vimfiler#custom#profile('default', 'context', {
+    \ 'safe': 0,
+    \ 'columns': '',
+    \ })
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_tree_indentation = 2
+let g:vimfiler_expand_jump_to_first_child = 0
+let g:vimfiler_tree_opened_icon = "   "
+let g:vimfiler_tree_closed_icon = "   "
+let g:vimfiler_tree_leaf_icon = ''
+let g:vimfiler_file_icon = '   '
+let g:vimfiler_marked_file_icon = '  﫟 '
 
 " fzf
+let g:fzf_layout = { 'down': '30%' }
 let g:fzf_preview_window = ''
-let $FZF_DEFAULT_OPTS='--reverse --no-color'
+let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::KEY BINDINGS:::::::::: #
+"# :::::::::::::::::::::::::::::: #
 " quit, save and reload
 nmap <leader>q      :q!<CR>
 nmap <leader>Q      :bufdo q!<CR>
 nmap <leader>w      :w<CR>
 nmap <leader>r      :bufdo e!<CR>
 
+" fzf/finder/explorer
+nmap <C-f>           :Files<CR>
+nmap <C-@>           :BLines<CR>
+nmap <leader>f       :find<Space>
+nmap <C-n>           :VimFilerSplit -toggle -force-hide -winwidth=35 -columns=''<CR>
+
 " move linese up/down
 nmap J              :m+<CR>
 nmap K              :m-2<CR>
-
-" fzf shortcuts/finder
-map <C-f>           :Files<CR>
-map <C-@>           :BLines<CR>
-nmap <leader>f      :find<Space>
-nmap <C-n>          :VimFilerSplit -toggle -columns=''<CR>
 
 " closing delimiter
 inoremap <leader>a   <ESC>la
@@ -187,21 +166,6 @@ inoremap ``          ``<left>
 inoremap {<CR> {<CR>}<Esc>ko
 inoremap [<CR> [<CR>]<Esc>ko
 inoremap (<CR> (<CR>)<Esc>ko
-
-function! IsEmptyPair(str)
-  for pair in split( &matchpairs, ',' ) + [ "''", '""', '``' ]
-    if a:str == join( split( pair, ':' ),'' )
-      return 1
-    endif
-  endfor
-  return 0
-endfunc
-
-function! WithinEmptyPair()
-  let cur = strpart( getline('.'), col('.')-2, 2 )
-  return IsEmptyPair( cur )
-endfunc
-
 inoremap <expr> <BS>    WithinEmptyPair() ? "\<Right>\<BS>\<BS>"      : "\<BS>"
 inoremap <expr> <CR>    WithinEmptyPair() ? "\<CR>\<CR>\<Up>"         : "\<CR>"
 inoremap <expr> <Space> WithinEmptyPair() ? "\<Space>\<Space>\<Left>" : "\<Space>"
@@ -209,6 +173,7 @@ inoremap <expr> <Space> WithinEmptyPair() ? "\<Space>\<Space>\<Left>" : "\<Space
 " copy/paste to/from primary
 vmap <leader>y      "*y
 vmap <leader>Y      "*Y
+nmap <leader>yy     "*yy
 nmap <leader>p      "*p
 nmap <leader>P      "*P
 nmap <C-p>          :set paste!<CR>
@@ -225,10 +190,30 @@ nmap <S-H>          :tabprevious<CR>
 nmap <leader>N      :tabnew<CR>
 nmap <leader>c      :tabclose<CR>
 
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::FUNCTIONS::::::::::::: #
+"# :::::::::::::::::::::::::::::: #
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
-autocmd BufWritePre * :call TrimWhiteSpace()
 
+function! IsEmptyPair(str)
+  for pair in split( &matchpairs, ',' ) + [ "''", '""', '``' ]
+    if a:str == join( split( pair, ':' ),'' )
+      return 1
+    endif
+  endfor
+  return 0
+endfunc
+
+function! WithinEmptyPair()
+  let cur = strpart( getline('.'), col('.')-2, 2 )
+  return IsEmptyPair( cur )
+endfunc
+
+"# :::::::::::::::::::::::::::::: #
+"# ::::::::AUTOCOMMANDS:::::::::: #
+"# :::::::::::::::::::::::::::::: #
+autocmd BufWritePre * :call TrimWhiteSpace()
 " disable auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

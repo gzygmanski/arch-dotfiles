@@ -17,7 +17,7 @@ c.tabs.title.format = "{scroll_pos}: {current_title}"
 
 c.input.insert_mode.auto_leave = False
 
-c.statusbar.show = "in-mode"
+c.statusbar.show = "never"
 c.statusbar.widgets = ["keypress", "scroll", "tabs", "progress"]
 c.statusbar.position = "bottom"
 c.statusbar.padding = {"bottom": 4, "left": 10, "right": 10, "top": 4}
@@ -27,6 +27,7 @@ c.completion.scrollbar.width = 0
 c.completion.height = '30%'
 
 c.hints.radius = 0
+c.prompt.radius = 0
 
 c.downloads.position = 'bottom'
 

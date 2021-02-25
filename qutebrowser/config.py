@@ -5,6 +5,9 @@
 # https://github.com/gzygmanski: #
 # gzygmanski@hotmail.com:::::::: #
 
+config.load_autoconfig()
+
+
 c.hints.chars = 'asdfjkl'
 c.tabs.position = "top"
 # c.tabs.width = '10%'
@@ -17,7 +20,7 @@ c.tabs.title.format = "{scroll_pos}: {current_title}"
 
 c.input.insert_mode.auto_leave = False
 
-c.statusbar.show = "never"
+c.statusbar.show = "in-mode"
 c.statusbar.widgets = ["keypress", "scroll", "tabs", "progress"]
 c.statusbar.position = "bottom"
 c.statusbar.padding = {"bottom": 4, "left": 10, "right": 10, "top": 4}
@@ -34,6 +37,7 @@ c.downloads.position = 'bottom'
 c.zoom.default = '100%'
 c.content.user_stylesheets = str(config.configdir) + '/custom.css'
 
+c.fonts.default_family = 'sans-serif'
 c.fonts.default_size = '14px'
 
 # Turn off dialogs for cert errors

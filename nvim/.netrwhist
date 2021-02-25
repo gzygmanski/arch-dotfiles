@@ -1,6 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/shisam/projects/jobs/frogzeecommerce-frontend'
+let g:netrw_dirhist_2='/home/shisam'
+let g:netrw_dirhist_1='/home/shisam/projects/jobs/frogzeecommerce-frontend'
+let g:netrw_dirhist_0='/home/shisam'
+let g:netrw_dirhist_9='/home/shisam/projects/jobs/frogzeecommerce-frontend/frogzeecommecre'
+let g:netrw_dirhist_8='/home/shisam/projects/jobs/frogzeecommerce-frontend/frogzeecommecre/organisms'
+let g:netrw_dirhist_7='/home/shisam/projects/jobs/frogzeecommerce-frontend/frogzeecommecre'
+let g:netrw_dirhist_6='/home/shisam/projects/jobs/frogzeecommerce-frontend'
+let g:netrw_dirhist_5='/home/shisam'
 let g:netrw_dirhist_4='/home/shisam/projects/learning-react/react-blog/src'
-let g:netrw_dirhist_3='/home/shisam/projects/learning-react/react-blog'
-let g:netrw_dirhist_2='/home/shisam/projects/learning-react/react-blog/src'
-let g:netrw_dirhist_1='/home/shisam/projects/learning-react/react-blog'

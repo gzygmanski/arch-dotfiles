@@ -1,13 +1,26 @@
 {
-  "javascript.validate.enable": false,
+  "python.analysis.diagnosticEnabled": false,
+  "python.jediEnabled": false,
+  "javascript.validate.enable": true,
   "javascript.suggest.enable": false,
-  "javascript.showUnused": false,
+  "javascript.showUnused": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
     "javascript",
     "javascriptreact",
+    "typescript",
+    "typescriptreact",
     "json",
-    "graphql"
-  ]
+    "graphql",
+    "python"
+  ],
+  "explorer.quitOnOpen": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<tab>": false,
+    "?": "actionMenu",
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
 }

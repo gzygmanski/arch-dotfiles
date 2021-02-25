@@ -1,0 +1,74 @@
+[username]
+style_user = "green bold"
+style_root = "green bold"
+format = "[$user]($style) in "
+disabled = false
+show_always = true
+
+[character]
+success_symbol = "[::](green)"
+error_symbol = "[::](red)"
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[aws]
+disabled = true
+
+[conda]
+disabled = true
+
+[dart]
+disabled = true
+
+[directory]
+read_only = "  "
+
+[docker]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[golang]
+disabled = true
+
+
+[haskell]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[swift]
+disabled = true

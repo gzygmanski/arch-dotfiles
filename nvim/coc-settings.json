@@ -1,8 +1,26 @@
 {
-  "python.analysis.diagnosticEnabled": false,
-  "python.jediEnabled": false,
+  "diagnostic.messageDelay": 0,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.virtualTextPrefix": " : ",
+  "diagnostic.enableHighlightLineNumber": false,
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.errorSign": "綠",
+  "diagnostic.infoSign": "綠",
+  "diagnostic.warningSign": "綠",
+  "diagnostic.hintSign": "綠",
+
+  "typescript.suggest.autoImports": true,
+  "typescriptreact.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true,
+  "javascriptreact.suggest.autoImports": true,
+
+  "python.analysis.diagnosticEnabled": true,
+  "python.jediEnabled": true,
   "javascript.validate.enable": true,
-  "javascript.suggest.enable": false,
+  "javascript.suggest.enable": true,
+
   "javascript.showUnused": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",

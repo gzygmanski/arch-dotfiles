@@ -4,16 +4,27 @@ style_root = "green bold"
 format = "[$user]($style) in "
 disabled = false
 show_always = true
+scan_timeout = 0
 
 [character]
-success_symbol = "[::](green)"
+format = "$symbol "
+# success_symbol = "[INSERT](blue)"
+# error_symbol = "[INSERT](red)"
+# vicmd_symbol = "[NORMAL](white)"
+success_symbol = "[::](blue)"
 error_symbol = "[::](red)"
+vicmd_symbol = "[::](white)"
+
+[jobs]
+disabled = true
 
 [nodejs]
 disabled = true
 
 [python]
-disabled = true
+style = "green bold"
+format = '[($virtualenv) ]($style)'
+disabled = false
 
 [aws]
 disabled = true

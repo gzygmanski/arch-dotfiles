@@ -29,6 +29,9 @@ disabled = false
 [aws]
 disabled = true
 
+[lua]
+disabled = true
+
 [conda]
 disabled = true
 

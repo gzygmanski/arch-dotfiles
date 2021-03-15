@@ -8,9 +8,11 @@ vim.g.nvim_tree_indent_markers = 0
 vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_git_hl = 0
 vim.g.nvim_tree_root_folder_modifier = ':~'
-vim.g.nvim_tree_tab_open = 1
+vim.g.nvim_tree_tab_open = 0
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 0}
 vim.g.nvim_tree_width_allow_resize  = 1
+-- vim.g.nvim_tree_disable_netrw = 0 -- 1 by default, disables netrw
+-- vim.g.nvim_tree_hijack_netrw = 0 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
 
 vim.g.nvim_tree_icons = {
   default = '   ',

@@ -70,7 +70,7 @@
       "const ${1:} = useRef(${2:})"
     ],
 		"description": "Create a useRef hook."
-  }
+  },
 	"React Component": {
 		"prefix": "tsrcc",
 		"body": [

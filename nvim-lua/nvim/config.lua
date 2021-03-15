@@ -17,27 +17,11 @@ require('plugins/telescope')
 require('plugins/barbar')
 require('plugins/nvimTree')
 
--- terminal
+-- custom buffers
 vim.api.nvim_exec([[
   autocmd TermOpen * setlocal signcolumn=no nonu nornu
   autocmd FileType NvimTree setlocal signcolumn=no nonu rnu
-]], true)
-
--- emmet
-vim.g.user_emmet_leader_key = '<leader>'
-vim.g.user_emmet_mode = 'in'
-vim.g.user_emmet_install_global = 0
-vim.g.jsx_ext_required = 0
-vim.g.user_emmet_settings = {
-  javascriptreact = {
-    extends = 'jsx',
-  },
-  typescriptreact = {
-    extends = 'jsx',
-  },
-}
-
-vim.api.nvim_exec([[
+  autocmd FileType vimwiki set spell spelllang=pl,en
   autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 ]], true)
 

@@ -25,7 +25,7 @@ local function set_keybindings()
 
     -- quit, write & reload
     {'n', '<leader>q', 'len(filter(getbufinfo(), "v:val.listed == 1")) == 1 ? "<CMD>qa!<CR>" : "<CMD>BufferWipeout!<CR>"', {expr = true, noremap = false, silent = true}},
-    {'n', '<leader><Esc>', '<CMD>BufferClose<CR>', {noremap = true, silent = true}},
+    {'n', '<leader><Esc>', '<CMD>q!<CR>', {noremap = true, silent = true}},
     {'n', '<leader>Q', '<CMD>qa!<CR>', {noremap = true, silent = true}},
     {'n', '<leader>w', '<CMD>w<CR>', {noremap = true, silent = true}},
     {'n', '<Leader>r', '<CMD>source ~/.config/nvim/init.vim<CR>', {noremap = true, silent = false}},

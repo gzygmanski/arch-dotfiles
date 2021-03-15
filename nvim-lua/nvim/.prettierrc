@@ -4,5 +4,6 @@
   "trailingComma": "all",
   "endOfLine": "auto",
   "arrowParens": "always",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "printWidth": 120
 }

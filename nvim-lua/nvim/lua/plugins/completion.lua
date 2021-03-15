@@ -4,16 +4,19 @@ vim.g.vsnip_filetypes = {
   javascriptreact = { 'javascript' },
   typescriptreact = { 'javascript' }
 }
--- vim.g.vsnip_filetypes.javascriptreact = [ 'javascript' ]
--- vim.g.vsnip_filetypes.typescriptreact = {"javascript"}
 
 -- emmet
+vim.g.user_emmet_leader_key = '<leader>'
 vim.g.user_emmet_mode = 'in'
 vim.g.user_emmet_install_global = 0
+vim.g.jsx_ext_required = 0
 vim.g.user_emmet_settings = {
-  javascript = {
-    extends = 'jsx'
-  }
+  javascriptreact = {
+    extends = 'jsx',
+  },
+  typescriptreact = {
+    extends = 'jsx',
+  },
 }
 
 -- compe

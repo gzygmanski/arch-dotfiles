@@ -4,15 +4,15 @@
     "body": [
       "import React, { FC } from 'react';",
       "",
-      "export type ${1:}Props = {}",
+      "export type ${1:$TM_FILENAME_BASE}Props = {}",
       "",
-      "const ${1:}: FC<${1:}Props> = (${2:props}) => {",
+      "const $1: FC<${1:$TM_FILENAME_BASE}Props> = (${2:props}) => {",
       " return (",
       "   ${3:<div>Component</div>}",
       " );",
       "};",
       "",
-      "export default ${1:}"
+      "export default ${1:$TM_FILENAME_BASE}"
     ],
 		"description": "Create a React Functional Component with typescript."
   },

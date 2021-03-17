@@ -22,6 +22,7 @@ local options = {
   hidden = true,
   ignorecase = true,
   incsearch = true,
+  inccommand = 'split',
   laststatus = 2,
   linebreak = false,
   nohlsearch = true,

@@ -16,7 +16,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     signs = { severity_limit = "Warning" },
     virtual_text = { spacing = 0, prefix = '', severity_limit = "Warning" },
     underline = false,
-    update_in_insert = true
+    update_in_insert = false 
 })
 
 local opts = {

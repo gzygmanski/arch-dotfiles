@@ -37,6 +37,7 @@ return require('packer').startup(function()
 
   -- utility
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+	use { 'TimUntersberger/neogit' }
 
   -- lsp
   use { 'neovim/nvim-lspconfig', requires = { 'glepnir/lspsaga.nvim', } }

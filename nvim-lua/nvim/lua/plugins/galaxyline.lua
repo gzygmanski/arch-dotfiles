@@ -110,14 +110,18 @@ gls.left = {
             highlight = {colors.nord6, colors.nord3}
         }
     },
-    -- {
-    --     GitBranch = {
-    --         -- provider = function() return string.format('   %s ', vcs.get_git_branch()) end,
-    --         -- provider = function() return string.format('  %s ', vcs.get_git_branch()) end,
-    --         condition = function() return condition.check_git_workspace() and condition.checkwidth() end,
-    --         highlight = {colors.nord6, colors.nord3}
-    --     }
-    -- },
+    {
+        GitBranch = {
+            provider = function() 
+              if vim.bo.filetype ~= 'help' then
+                return string.format('   %s ', vcs.get_git_branch()) 
+              end
+            end,
+            -- provider = function() return string.format('  %s ', vcs.get_git_branch()) end,
+            condition = function() return condition.check_git_workspace() and condition.checkwidth() end,
+            highlight = {colors.nord6, colors.nord3}
+        }
+    },
 }
 
 gls.right = {
@@ -166,19 +170,20 @@ gls.short_line_left = {
                 else
                     if fileinfo.get_current_file_name() ~= '' then
                         return string.format('   %s ', fileinfo.get_current_file_name())
+                    else
+                        return '   Buffer  '
                     end
                 end
             end,
             separator = '',
             highlight = {colors.nord6, colors.nord3}
         }
-    }
+    },
+    -- {
+    --     FillWhenEmptyBuffer = {
+    --         provider = function() return '' end,
+    --         condition = not condition.buffer_not_empty,
+    --         highlight = {colors.nord6, colors.nord3}
+    --     }
+    -- },
 }
--- gls.short_line_right = {
---     {
---         Blank = {
---             provider = function() return ' ▎' end,
---             highlight = {colors.nord6, colors.nord3}
---         }
---     },
---   }

@@ -58,8 +58,8 @@ local function set_keybindings()
     {'n', 'mk', '<C-w>K', {noremap = true, silent = true}},
     {'n', 'ml', '<C-w>L', {noremap = true, silent = true}},
 
-    {'n', '<S-h>', '<CMD>tabprevious<CR>', {noremap = true, silent = true}},
-    {'n', '<S-l>', '<CMD>tabnext<CR>', {noremap = true, silent = true}},
+    {'n', '<S-h>', '<CMD>BufferPrev<CR>', {noremap = true, silent = true}},
+    {'n', '<S-l>', '<CMD>BufferNext<CR>', {noremap = true, silent = true}},
 
     {'n', 'mt', '<C-w>T', {noremap = true, silent = true}},
     {'n', 'me', '<C-w>=', {noremap = true, silent = true}},
@@ -82,13 +82,12 @@ local function set_keybindings()
     {'i', '""', '""<left>', {noremap = true, silent = true}},
     {'i', '``', '``<left>', {noremap = true, silent = true}},
     {'i', '<leader>cb', '```<CR>```<Esc>ko', {noremap = true, silent = true}},
-    {'i', '(<CR>', '(<CR>)<Esc>ko', {noremap = true, silent = true}},
-    {'i', '{<CR>', '{<CR>}<Esc>ko', {noremap = true, silent = true}},
-    {'i', '[<CR>', '[<CR>]<Esc>ko', {noremap = true, silent = true}},
+    {'i', '(<CR>', '(<CR>)<Esc>O', {noremap = true, silent = true}},
+    {'i', '{<CR>', '{<CR>}<Esc>O', {noremap = true, silent = true}},
+    {'i', '[<CR>', '[<CR>]<Esc>O', {noremap = true, silent = true}},
     {'i', '<BS>', 'v:lua.within_empty_pair() ? "<Right><BS><BS>" : "<BS>"', {expr = true, noremap = true, silent = true }},
-    {'i', '<CR>', 'v:lua.within_empty_pair() ? "<CR><CR><BS><Up><Tab>" : "<CR>"', {expr = true, noremap = true, silent = true }},
+    {'i', '<CR>', 'v:lua.within_empty_pair() ? "<CR><Esc>O" : "<CR>"', {expr = true, noremap = true, silent = true }},
     {'i', '<Space>', 'v:lua.within_empty_pair() ? "<Space><Space><Left>" : "<Space>"', {expr = true, noremap = true, silent = true }},
-
     -- snippets
     {'i', '<leader>e', 'vsnip#available(1) ? "<Plug>(vsnip-expand)" : "<leader>e"', {expr = true, noremap=false, silent = false }},
     {'i', '<leader>n', 'vsnip#available(1) ? "<Plug>(vsnip-jump-next)" : "<leader>n"', {expr = true, noremap=false, silent = false }},
@@ -109,6 +108,9 @@ local function set_keybindings()
     {'n', '<C-b>', '<CMD>lua require("telescope.builtin").buffers({previewer = false})<CR>', {noremap = true, silent = false}},
     {'n', '<C-space>', '<CMD>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', {noremap = true, silent = false}},
     {'n', '<C-n>', '<CMD>NvimTreeToggle<CR>', {noremap = true, silent = true}},
+
+    -- git
+    {'n', 'gs', '<CMD>lua require("neogit").status.create("split")<CR>', {noremap = true, silent = true}},
   }
 
   for _, key in pairs(keybindings) do keymap(key[1], key[2], key[3], key[4]) end

@@ -68,13 +68,6 @@ function condition.checkwidth()
 end
 
 gls.left = {
-    -- {
-    --     Sep1 = {
-    --         provider = function() return '▎' end,
-            
-    --         highlight = {colors.nord6, colors.nord12}
-    --     }
-    -- },
     {
         Mode = {
             provider = function()
@@ -83,7 +76,7 @@ gls.left = {
                     alias = {n = 'N', i = 'I', c = 'C', V= 'V', [''] = 'V'}
                 end
                 return string.format('   %s  ', alias[vim.fn.mode()])
-                -- 
+                --  
             end,
             highlight = {colors.nord6, colors.nord12, 'bold'},
         }
@@ -94,13 +87,6 @@ gls.left = {
             highlight = {colors.nord6, colors.nord3}
         }
     },
-    -- {
-    --     Sep2 = {
-    --         provider = function() return ' ▎' end,
-    --         highlight = {colors.nord6, colors.nord3}
-    --     }
-    -- },
-    -- {
     {
         FileName = {
             provider = function()
@@ -110,18 +96,18 @@ gls.left = {
             highlight = {colors.nord6, colors.nord3}
         }
     },
-    {
-        GitBranch = {
-            provider = function() 
-              if vim.bo.filetype ~= 'help' then
-                return string.format('   %s ', vcs.get_git_branch()) 
-              end
-            end,
-            -- provider = function() return string.format('  %s ', vcs.get_git_branch()) end,
-            condition = function() return condition.check_git_workspace() and condition.checkwidth() end,
-            highlight = {colors.nord6, colors.nord3}
-        }
-    },
+    -- {
+    --     GitBranch = {
+    --         provider = function() 
+    --           if vim.bo.filetype ~= 'help' then
+    --             return string.format('   %s ', vcs.get_git_branch()) 
+    --           end
+    --         end,
+    --         -- provider = function() return string.format('  %s ', vcs.get_git_branch()) end,
+    --         condition = function() return condition.check_git_workspace() and condition.checkwidth() end,
+    --         highlight = {colors.nord6, colors.nord3}
+    --     }
+    -- },
 }
 
 gls.right = {
@@ -169,7 +155,7 @@ gls.short_line_left = {
                     end
                 else
                     if fileinfo.get_current_file_name() ~= '' then
-                        return string.format('   %s ', fileinfo.get_current_file_name())
+                        return string.format('   %s ', get_current_file_name())
                     else
                         return '   Buffer  '
                     end

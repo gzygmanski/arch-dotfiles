@@ -27,14 +27,15 @@ local function set_keybindings()
     {'n', '<leader>q', 'len(filter(getbufinfo(), "v:val.listed == 1")) == 1 ? "<CMD>qa!<CR>" : "<CMD>BufferWipeout!<CR>"', {expr = true, noremap = false, silent = true}},
     {'n', '<leader><Esc>', '<CMD>q!<CR>', {noremap = true, silent = true}},
     {'n', '<leader>Q', '<CMD>qa!<CR>', {noremap = true, silent = true}},
-    {'n', '<leader>w', '<CMD>w<CR>', {noremap = true, silent = true}},
+    {'n', '<leader>w', '<CMD>w!<CR>', {noremap = true, silent = true}},
     {'n', '<Leader>r', '<CMD>source ~/.config/nvim/init.vim<CR>', {noremap = true, silent = false}},
 
     -- terminal
-    {'n', 'tt', '<CMD>tabnew term://zsh<CR>i', {noremap = true, silent = true}},
-    {'n', 'tv', '<CMD>vsplit term://zsh<CR>i', {noremap = true, silent = true}},
-    {'n', 'ts', '<CMD>split term://zsh<CR>i', {noremap = true, silent = true}},
-    {'t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true}},
+    {'n', 'tt', '<CMD>tabnew term://zsh<CR>', {noremap = true, silent = true}},
+    {'n', 'te', '<CMD>e term://zsh<CR>', {noremap = true, silent = true}},
+    {'n', 'tv', '<CMD>vsplit term://zsh<CR>', {noremap = true, silent = true}},
+    {'n', 'ts', '<CMD>split term://zsh<CR>', {noremap = true, silent = true}},
+    {'t', ',<Esc>', '<C-\\><C-n>', {noremap = true, silent = true}},
 
     -- clipboard
     {'v', '<leader>yy', '"*yy', {noremap = true, silent = true}},
@@ -57,6 +58,9 @@ local function set_keybindings()
     {'n', 'mj', '<C-w>J', {noremap = true, silent = true}},
     {'n', 'mk', '<C-w>K', {noremap = true, silent = true}},
     {'n', 'ml', '<C-w>L', {noremap = true, silent = true}},
+
+    {'n', 'mrr', '<C-w>r', {noremap = true, silent = true}},
+    {'n', 'mrx', '<C-w>x', {noremap = true, silent = true}},
 
     {'n', '<S-h>', '<CMD>BufferPrev<CR>', {noremap = true, silent = true}},
     {'n', '<S-l>', '<CMD>BufferNext<CR>', {noremap = true, silent = true}},
@@ -100,6 +104,8 @@ local function set_keybindings()
     {'n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>', {noremap = true, silent = true}},
     {'n', 'gn', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>', {noremap = true, silent = true}},
     {'n', 'gp', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true, silent = true}},
+    {'n', 'gl', '<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {noremap = true, silent = true}},
+    {'n', 'gq', '<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>', {noremap = true, silent = true}},
     {'n', 'gh', '<CMD>lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true}},
     {'n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', {noremap = true, silent = true}},
 

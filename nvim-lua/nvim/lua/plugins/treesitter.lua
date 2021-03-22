@@ -4,6 +4,6 @@ require('nvim-treesitter.configs').setup {
     use_languagetree=true
   },
   indent = {
-    enable = true
+    enable = false
   },
 }

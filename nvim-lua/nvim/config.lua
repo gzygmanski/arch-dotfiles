@@ -20,7 +20,7 @@ require('plugins/nvimTree')
 -- custom buffers
 vim.api.nvim_exec([[
   autocmd TermOpen * setlocal signcolumn=no nonu nornu
-  autocmd FileType NvimTree setlocal signcolumn=no nonu rnu
+  autocmd FileType NvimTree setlocal signcolumn=no nu rnu
   autocmd FileType vimwiki set spell spelllang=pl,en
   autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 ]], true)
